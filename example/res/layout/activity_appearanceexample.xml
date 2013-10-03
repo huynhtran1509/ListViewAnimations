@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:divider="@null" />
 
-    <com.emilsjolander.components.stickylistheaders.StickyListHeadersListView
+    <se.emilsjolander.stickylistheaders.StickyListHeadersListView
         android:id="@+id/activity_appearanceexample_stickylistview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

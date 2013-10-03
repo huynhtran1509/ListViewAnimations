@@ -17,6 +17,8 @@ package com.haarman.listviewanimations.appearanceexamples;
 
 import java.util.ArrayList;
 
+import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
+import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -32,7 +34,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.emilsjolander.components.stickylistheaders.StickyListHeadersAdapter;
 import com.haarman.listviewanimations.ArrayAdapter;
 import com.haarman.listviewanimations.BaseActivity;
 import com.haarman.listviewanimations.R;
@@ -48,9 +49,9 @@ public class AppearanceExamplesActivity extends BaseActivity implements OnNaviga
 	private BaseAdapter mAdapter;
 
 	private ListView mListView;
-	private ListView mStickyListView;
+	private StickyListHeadersListView mStickyListView;
 
-	private ListView mCurrentListView;
+	private View mCurrentListView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +59,7 @@ public class AppearanceExamplesActivity extends BaseActivity implements OnNaviga
 		setContentView(R.layout.activity_appearanceexample);
 
 		mListView = (ListView) findViewById(R.id.activity_appearanceexample_listview);
-		mStickyListView = (ListView) findViewById(R.id.activity_appearanceexample_stickylistview);
+		mStickyListView = (StickyListHeadersListView) findViewById(R.id.activity_appearanceexample_stickylistview);
 
 		mCurrentListView = mListView;
 		mStickyListView.setVisibility(View.GONE);
@@ -76,38 +77,68 @@ public class AppearanceExamplesActivity extends BaseActivity implements OnNaviga
 
 	private void setAlphaAdapter() {
 		AnimationAdapter animAdapter = new AlphaInAnimationAdapter(mAdapter);
-		animAdapter.setAbsListView(mCurrentListView);
-		mCurrentListView.setAdapter(animAdapter);
+		if (mCurrentListView == mListView) {
+			animAdapter.setAbsListView(mListView);
+			mListView.setAdapter(animAdapter);
+		} else {
+			animAdapter.setAbsListView(mStickyListView);
+			mStickyListView.setAdapter(animAdapter);
+		}
 	}
 
 	private void setLeftAdapter() {
 		AnimationAdapter animAdapter = new SwingLeftInAnimationAdapter(mAdapter);
-		animAdapter.setAbsListView(mCurrentListView);
-		mCurrentListView.setAdapter(animAdapter);
+		if (mCurrentListView == mListView) {
+			animAdapter.setAbsListView(mListView);
+			mListView.setAdapter(animAdapter);
+		} else {
+			animAdapter.setAbsListView(mStickyListView);
+			mStickyListView.setAdapter(animAdapter);
+		}
 	}
 
 	private void setRightAdapter() {
 		AnimationAdapter animAdapter = new SwingRightInAnimationAdapter(mAdapter);
-		animAdapter.setAbsListView(mCurrentListView);
-		mCurrentListView.setAdapter(animAdapter);
+		if (mCurrentListView == mListView) {
+			animAdapter.setAbsListView(mListView);
+			mListView.setAdapter(animAdapter);
+		} else {
+			animAdapter.setAbsListView(mStickyListView);
+			mStickyListView.setAdapter(animAdapter);
+		}
 	}
 
 	private void setBottomAdapter() {
 		AnimationAdapter animAdapter = new SwingBottomInAnimationAdapter(mAdapter);
-		animAdapter.setAbsListView(mCurrentListView);
-		mCurrentListView.setAdapter(animAdapter);
+		if (mCurrentListView == mListView) {
+			animAdapter.setAbsListView(mListView);
+			mListView.setAdapter(animAdapter);
+		} else {
+			animAdapter.setAbsListView(mStickyListView);
+			mStickyListView.setAdapter(animAdapter);
+		}
 	}
 
 	private void setBottomRightAdapter() {
 		AnimationAdapter animAdapter = new SwingBottomInAnimationAdapter(new SwingRightInAnimationAdapter(mAdapter));
-		animAdapter.setAbsListView(mCurrentListView);
-		mCurrentListView.setAdapter(animAdapter);
+		if (mCurrentListView == mListView) {
+			animAdapter.setAbsListView(mListView);
+			mListView.setAdapter(animAdapter);
+		} else {
+			animAdapter.setAbsListView(mStickyListView);
+			mStickyListView.setAdapter(animAdapter);
+		}
 	}
 
 	private void setScaleAdapter() {
 		AnimationAdapter animAdapter = new ScaleInAnimationAdapter(mAdapter);
-		animAdapter.setAbsListView(mCurrentListView);
-		mCurrentListView.setAdapter(animAdapter);
+		if (mCurrentListView == mListView) {
+			animAdapter.setAbsListView(mListView);
+			mListView.setAdapter(animAdapter);
+		} else {
+			animAdapter.setAbsListView(mStickyListView);
+			mStickyListView.setAdapter(animAdapter);
+		}
 	}
 
 	private static ArrayList<Integer> getItems() {

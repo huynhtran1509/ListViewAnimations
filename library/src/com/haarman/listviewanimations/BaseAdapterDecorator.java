@@ -15,7 +15,8 @@
  */
 package com.haarman.listviewanimations;
 
-import com.haarman.listviewanimations.view.DynamicListView;
+import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
+import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 import android.database.DataSetObserver;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,7 @@ import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.SectionIndexer;
 
-import com.emilsjolander.components.stickylistheaders.StickyListHeadersAdapter;
+import com.haarman.listviewanimations.view.DynamicListView;
 import com.haarman.listviewanimations.view.DynamicListView.Swappable;
 
 /**
@@ -47,6 +48,14 @@ public abstract class BaseAdapterDecorator extends BaseAdapter implements Sectio
 
 	public void setAbsListView(AbsListView listView) {
 		mListView = listView;
+
+		if (mDecoratedBaseAdapter instanceof BaseAdapterDecorator) {
+			((BaseAdapterDecorator) mDecoratedBaseAdapter).setAbsListView(listView);
+		}
+	}
+
+	public void setAbsListView(StickyListHeadersListView listView) {
+		mListView = listView.getWrappedList();
 
 		if (mDecoratedBaseAdapter instanceof BaseAdapterDecorator) {
 			((BaseAdapterDecorator) mDecoratedBaseAdapter).setAbsListView(listView);
