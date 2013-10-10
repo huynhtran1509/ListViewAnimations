@@ -74,3 +74,4 @@ example/proguard-project.txt
 *proguard-project.txt
 
 .gradle/
+gen-external-apklibs/
