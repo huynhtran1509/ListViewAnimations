@@ -5,6 +5,10 @@ ListViewAnimations is an Open Source Android library that allows developers to e
 Feel free to use it all you want in your Android apps provided that you cite this project and include the license in your app.
 A mention to haarman.niek [at] gmail.com about your app using this library is very welcome! Start your message's title with `[LVA]`.
 
+Willowtree Modifications
+-----
+* Removed refrences to StickyListHeaders
+
 Known applications using ListViewAnimations
 -----
 * Ultimate Tic-Tac-Toe ([Play Store][12])
